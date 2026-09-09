@@ -1,3 +1,4 @@
+# Registered on push: GitHub indexes template-provided workflows only after a commit touches them.
 name: Excavator
 
 on:
