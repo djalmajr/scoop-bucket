@@ -1,5 +1,5 @@
 {
-    "version": "1.14.1",
+    "version": "1.14.2",
     "description": "ai-usagebar test builds from the djalmajr fork (Windows tray, TUI, CLI). For trying unreleased changes; use 'ai-usagebar' for upstream releases",
     "homepage": "https://github.com/djalmajr/ai-usagebar",
     "license": "MIT",
@@ -9,8 +9,8 @@
     ],
     "architecture": {
         "64bit": {
-            "url": "https://github.com/djalmajr/ai-usagebar/releases/download/dev-v1.14.1/ai-usagebar-windows-x86_64.zip",
-            "hash": "a79342268cb62f574f44d2c8aed156d1b2658ecdd6f41f27d7c65582aaff0f16"
+            "url": "https://github.com/djalmajr/ai-usagebar/releases/download/dev-v1.14.2/ai-usagebar-windows-x86_64.zip",
+            "hash": "5c6e69ef5259869bff3434a6e4d7452cf545182c2a549efb9fd51050b0119f60"
         }
     },
     "bin": [
