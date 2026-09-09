@@ -1,42 +1,33 @@
-# Scoop Bucket Template
+# djalmajr's Scoop bucket
 
-<!-- Uncomment the following line after replacing placeholders -->
-<!-- [![Tests](https://github.com/<username>/<bucketname>/actions/workflows/ci.yml/badge.svg)](https://github.com/<username>/<bucketname>/actions/workflows/ci.yml) [![Excavator](https://github.com/<username>/<bucketname>/actions/workflows/excavator.yml/badge.svg)](https://github.com/<username>/<bucketname>/actions/workflows/excavator.yml) -->
+[![Tests](https://github.com/djalmajr/scoop-bucket/actions/workflows/ci.yml/badge.svg)](https://github.com/djalmajr/scoop-bucket/actions/workflows/ci.yml) [![Excavator](https://github.com/djalmajr/scoop-bucket/actions/workflows/excavator.yml/badge.svg)](https://github.com/djalmajr/scoop-bucket/actions/workflows/excavator.yml)
 
-Template bucket for [Scoop](https://scoop.sh), the Windows command-line installer.
+A personal bucket for [Scoop](https://scoop.sh), the Windows command-line installer.
 
-## How do I use this template?
-
-1. Generate your own copy of this repository with the "Use this template"
-   button.
-2. Allow all GitHub Actions:
-   - Navigate to `Settings` - `Actions` - `General` - `Actions permissions`.
-   - Select `Allow all actions and reusable workflows`.
-   - Then `Save`.
-3. Workflow permissions:
-   - Navigate to `Settings` - `Actions` - `General` - `Workflow permissions`.
-   - Ensure `Read repository contents and packages permissions` is selected.
-   - Then `Save`.
-4. Document the bucket in `README.md`.
-5. Replace the placeholder repository string in `bin/auto-pr.ps1`.
-6. Create new manifests by copying `bucket/app-name.json.template` to
-   `bucket/<app-name>.json`.
-7. Commit and push changes.
-8. If you'd like your bucket to be indexed on `https://scoop.sh`, add the
-   topic `scoop-bucket` to your repository.
-
-## How do I install these manifests?
-
-After manifests have been committed and pushed, run the following:
+## Install
 
 ```pwsh
-scoop bucket add <bucketname> https://github.com/<username>/<bucketname>
-scoop install <bucketname>/<manifestname>
+scoop bucket add djalmajr https://github.com/djalmajr/scoop-bucket
+scoop install ai-usagebar
 ```
 
-## How do I contribute new manifests?
+## Manifests
 
-To make a new manifest contribution, please read the [Contributing
-Guide](https://github.com/ScoopInstaller/.github/blob/main/.github/CONTRIBUTING.md)
-and [App Manifests](https://github.com/ScoopInstaller/Scoop/wiki/App-Manifests)
-wiki page.
+| App | What it installs | Upstream |
+|---|---|---|
+| `ai-usagebar` | `ai-usagebar`, `ai-usagebar-tui` and `ai-usagebar-tray` on the PATH, plus an "AI Usage" Start Menu shortcut for the tray | [akitaonrails/ai-usagebar](https://github.com/akitaonrails/ai-usagebar) |
+
+Every manifest downloads the upstream project's own GitHub release and verifies it against the
+`.sha256` sidecar published next to it. Nothing here is rebuilt or repackaged.
+
+Updates land automatically: the Excavator workflow runs `checkver` every four hours and commits
+the new version and hash, so `scoop update ai-usagebar` picks a release up shortly after it is
+tagged. Uninstalling with `scoop uninstall ai-usagebar` also clears the "Start with Windows"
+entry and the tray-icon settings the app wrote for its install directory; config and cache stay
+where they are.
+
+## Contributing
+
+Open an issue or a pull request with a manifest that follows the
+[App Manifests](https://github.com/ScoopInstaller/Scoop/wiki/App-Manifests) wiki page. `bin/test.ps1`
+runs the same checks CI does.
