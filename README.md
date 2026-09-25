@@ -22,7 +22,8 @@ Every manifest downloads the upstream project's own GitHub release and verifies 
 
 Updates land automatically: the Excavator workflow runs `checkver` every four hours and commits
 the new version and hash, so `scoop update ai-usagebar` picks a release up shortly after it is
-tagged. Uninstalling with `scoop uninstall ai-usagebar` also clears the "Start with Windows"
+tagged. Uninstalling with `scoop uninstall ai-usagebar` stops the tray only if it runs from this
+install (a copy started from anywhere else keeps running), and clears the "Start with Windows"
 entry and the tray-icon settings the app wrote for its install directory; config and cache stay
 where they are.
 
